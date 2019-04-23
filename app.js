@@ -6,6 +6,7 @@ const buttons = document.querySelectorAll('[data-time]');
 function timer(seconds){
   // in case there are timers already set
   clearInterval(countdown);
+  
   const now = Date.now(); // is going to be in milliseconds
   const then = now + seconds * 1000 // we * by 1000 because milliseconds needs to be converted into seconds
 
@@ -51,3 +52,11 @@ function startTimer(){
 
 
 buttons.forEach( button => button.addEventListener('click', startTimer));
+
+// if element has a name attr you can just type out document.thenTheNameAttr
+document.customForm.addEventListener('submit', function(e){
+  e.preventDefault();
+  const mins = (this.minutes.value);
+  timer(mins * 60);
+  this.reset();
+})
